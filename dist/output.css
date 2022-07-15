@@ -628,3 +628,27 @@ video {
 .border-4 {
   border-width: 4px;
 }
+
+.blue {
+  background-color: blue;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.pink {
+  background-color: violet;
+}
+
+.orange {
+  background-color: orange;
+}
