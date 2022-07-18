@@ -17,31 +17,31 @@ function randomizeColors($SQUARES, colors) {
   //para cada elemento del array randomColor(elemento,indice)
   randomColors.forEach(function (color, i) {
     //agrega la clase color(elemento de randomcolors)
-    $SQUARES[i].id = color;
+    $SQUARES[i].classList.add(color);
   });
 }
 
 $BOARD.onclick = function (e) {
   const $ELEMENT = e.target;
   if (
-    $ELEMENT.id == "red" ||
-    $ELEMENT.id == "blue" ||
-    $ELEMENT.id == "green" ||
-    $ELEMENT.id == "yellow" ||
-    $ELEMENT.id == "pink" ||
-    $ELEMENT.id == "orange"
+    $ELEMENT.classList.contains("red") ||
+    $ELEMENT.classList.contains("blue") ||
+    $ELEMENT.classList.contains("green") ||
+    $ELEMENT.classList.contains("yellow") ||
+    $ELEMENT.classList.contains("pink") ||
+    $ELEMENT.classList.contains("orange")
   ) {
-    console.log(e.target.id);
+    console.log(e.target);
     showTiles(e.target);
   }
 };
 function hideTiles() {
-  $SQUARES.forEach(function (square) {
-    square.classList.add("occult");
+  $SQUARES.forEach(function (a) {
+    a.classList.add("occult");
   });
 }
 function showTiles(tile) {
   tile.classList.remove("occult");
 }
-
+function correctTile() {}
 configGame();

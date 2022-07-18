@@ -2,25 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 #board {
-  background: black;
+  background: x;
 }
-#blue {
+.blue {
   background-color: blue;
 }
 
-#red {
+.red {
   background-color: red;
 }
-#green {
+.green {
   background-color: green;
 }
-#yellow {
+.yellow {
   background-color: yellow;
 }
-#pink {
+.pink {
   background-color: violet;
 }
-#orange {
+.orange {
   background-color: orange;
 }
 
