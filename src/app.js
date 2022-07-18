@@ -7,6 +7,7 @@ function configGame() {
   const colors = ["blue", "red", "green", "yellow", "pink", "orange"];
   const duplicateColors = colors.concat(colors);
   randomizeColors($SQUARES, duplicateColors);
+  hideTiles();
 }
 function randomizeColors($SQUARES, colors) {
   const randomColors = colors.sort(function () {
@@ -31,10 +32,16 @@ $BOARD.onclick = function (e) {
     $ELEMENT.id == "orange"
   ) {
     console.log(e.target.id);
+    showTiles(e.target);
   }
 };
-$SQUARES.forEach(function (square) {
-  square.classList.add("occult");
-});
+function hideTiles() {
+  $SQUARES.forEach(function (square) {
+    square.classList.add("occult");
+  });
+}
+function showTiles(tile) {
+  tile.classList.remove("occult");
+}
 
 configGame();
