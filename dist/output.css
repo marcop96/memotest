@@ -601,6 +601,10 @@ video {
   box-sizing: border-box;
 }
 
+.flex {
+  display: flex;
+}
+
 .grid {
   display: grid;
 }
@@ -625,30 +629,55 @@ video {
   grid-template-rows: repeat(4, minmax(0, 1fr));
 }
 
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
 .border-4 {
   border-width: 4px;
 }
 
-.blue {
+.border {
+  border-width: 1px;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+#board {
+  background: black;
+}
+
+#blue {
   background-color: blue;
 }
 
-.red {
+#red {
   background-color: red;
 }
 
-.green {
+#green {
   background-color: green;
 }
 
-.yellow {
+#yellow {
   background-color: yellow;
 }
 
-.pink {
+#pink {
   background-color: violet;
 }
 
-.orange {
+#orange {
   background-color: orange;
+}
+
+.occult {
+  opacity: 0;
 }
