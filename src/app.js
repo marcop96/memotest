@@ -1,7 +1,8 @@
 let $BOARD = document.querySelector("#board");
 let $SQUARES = $BOARD.querySelectorAll("#square");
 let $END_GAME_DIV = document.querySelector("end-game");
-let currentSquare = [];
+let $firstSquare = null;
+let currentTile;
 
 function configGame() {
   const colors = ["blue", "red", "green", "yellow", "pink", "orange"];
@@ -22,19 +23,11 @@ function randomizeColors($SQUARES, colors) {
 }
 
 $BOARD.onclick = function (e) {
-  const $ELEMENT = e.target;
-  if (
-    $ELEMENT.classList.contains("red") ||
-    $ELEMENT.classList.contains("blue") ||
-    $ELEMENT.classList.contains("green") ||
-    $ELEMENT.classList.contains("yellow") ||
-    $ELEMENT.classList.contains("pink") ||
-    $ELEMENT.classList.contains("orange")
-  ) {
-    console.log(e.target);
-    showTiles(e.target);
-  }
+  const $currentTile = e.target;
+  showTiles($currentTile);
+  tileHandler($currentTile);
 };
+
 function hideTiles() {
   $SQUARES.forEach(function (a) {
     a.classList.add("occult");
@@ -45,3 +38,9 @@ function showTiles(tile) {
 }
 function correctTile() {}
 configGame();
+
+function tileHandler($currentTile) {
+  if ($firstSquare === null) {
+    $firstSquare = $currentTile;
+  }
+}

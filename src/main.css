@@ -27,3 +27,11 @@
 .occult {
   opacity: 0;
 }
+
+.nodisplay {
+  display: none;
+}
+
+.completed {
+  background-color: grey;
+}
