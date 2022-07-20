@@ -15,9 +15,8 @@ function randomizeColors($SQUARES, colors) {
     return 0.5 - Math.random();
   });
 
-  //para cada elemento del array randomColor(elemento,indice)
   randomColors.forEach(function (color, i) {
-    //agrega la clase color(elemento de randomcolors)
+    //adds color to each element in the array
     $SQUARES[i].classList.add(color);
   });
 }
@@ -30,25 +29,23 @@ function tileHandler($currentTile) {
     if ($firstTile === $currentTile) {
       return;
     }
+    turns++;
+    if (areTilesSimilar($firstTile, $currentTile)) {
+      completeTile($firstTile);
+      completeTile($currentTile);
+    } else {
+      hideTiles2($firstTile);
+      hideTiles2($currentTile);
+    }
   }
 }
-
-$BOARD.onclick = function (e) {
-  const $currentTile = e.target;
-  showTiles($currentTile);
-  tileHandler($currentTile);
-  if (areTilesSimilar($firstTile, $currentTile)) {
-  }
-};
-
+function hideTiles2(tile) {
+  tile.classList.add("occult");
+}
 function hideTiles() {
   $SQUARES.forEach(function (a) {
     a.classList.add("occult");
   });
-  function completeTile($firstTile, $currentTile) {
-    $firstTile.classList.add("completed");
-    $currentTile.classList.add("completed");
-  }
 }
 function showTiles(tile) {
   tile.classList.remove("occult");
@@ -60,4 +57,15 @@ function areTilesSimilar($firstTile, $currentTile) {
     return false;
   }
 }
+
+$BOARD.onclick = function (e) {
+  const $currentTile = e.target;
+  showTiles($currentTile);
+  tileHandler($currentTile);
+};
+function completeTile(tile) {
+  tile.classList.add("completed");
+  tile.remove;
+}
+
 configGame();
