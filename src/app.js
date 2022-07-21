@@ -1,6 +1,6 @@
 let $BOARD = document.querySelector("#board");
 let $SQUARES = $BOARD.querySelectorAll("#square");
-let $END_GAME_DIV = document.querySelector("end-game");
+let $END_GAME_CONTAINER = document.querySelector("end-game");
 let $firstTile = null;
 let currentTile;
 let turns = 0;
@@ -21,7 +21,7 @@ function randomizeColors($SQUARES, colors) {
   });
 }
 function tileHandler($currentTile) {
-  showTiles($currentTile);
+  showTile($currentTile);
   //if its null its the first tile clicked
   if ($firstTile === null) {
     $firstTile = $currentTile; // so it sets it up as current tile
@@ -34,20 +34,23 @@ function tileHandler($currentTile) {
       completeTile($firstTile);
       completeTile($currentTile);
     } else {
-      hideTiles2($firstTile);
-      hideTiles2($currentTile);
+      hideTile($firstTile);
+      hideTile($currentTile);
     }
+    $firstTile = null;
   }
 }
-function hideTiles2(tile) {
-  tile.classList.add("occult");
+function hideTile(tile) {
+  setTimeout(function () {
+    tile.classList.add("occult");
+  }, 500);
 }
 function hideTiles() {
   $SQUARES.forEach(function (a) {
     a.classList.add("occult");
   });
 }
-function showTiles(tile) {
+function showTile(tile) {
   tile.classList.remove("occult");
 }
 function areTilesSimilar($firstTile, $currentTile) {
@@ -60,12 +63,16 @@ function areTilesSimilar($firstTile, $currentTile) {
 
 $BOARD.onclick = function (e) {
   const $currentTile = e.target;
-  showTiles($currentTile);
-  tileHandler($currentTile);
+  if ($currentTile.classList.contains("square")) {
+    tileHandler($currentTile);
+  }
 };
 function completeTile(tile) {
-  tile.classList.add("completed");
-  tile.remove;
+  setTimeout(function () {
+    tile.classList.add("completed");
+    tile.remove;
+  }),
+    1000;
 }
 
 configGame();
