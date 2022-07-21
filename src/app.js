@@ -1,9 +1,11 @@
-let $BOARD = document.querySelector("#board");
-let $SQUARES = $BOARD.querySelectorAll("#square");
-let $END_GAME_CONTAINER = document.querySelector("end-game");
+const $BOARD = document.querySelector("#board");
+const $SQUARES = $BOARD.querySelectorAll("#square");
+const $END_GAME_CONTAINER = document.querySelector(".end-game");
+let $END_GAME_TEXT = $END_GAME_CONTAINER.querySelector("h1");
 let $firstTile = null;
 let currentTile;
 let turns = 0;
+let turnsToComplete = 6;
 function configGame() {
   const colors = ["blue", "red", "green", "yellow", "pink", "orange"];
   const duplicateColors = colors.concat(colors);
@@ -33,6 +35,7 @@ function tileHandler($currentTile) {
     if (areTilesSimilar($firstTile, $currentTile)) {
       completeTile($firstTile);
       completeTile($currentTile);
+      turnsToComplete--;
     } else {
       hideTile($firstTile);
       hideTile($currentTile);
@@ -60,6 +63,21 @@ function areTilesSimilar($firstTile, $currentTile) {
     return false;
   }
 }
+function didGameEnd() {
+  if (turnsToComplete === 0) {
+    $END_GAME_CONTAINER.classList.remove("nodisplay");
+    $END_GAME_TEXT.innerText = `congratulations! you won in ${turns} turns`;
+    $BOARD.classList.add("occult");
+  }
+}
+function completeTile(tile) {
+  setTimeout(function () {
+    tile.classList.add("completed");
+    tile.remove;
+    didGameEnd();
+  }),
+    1000;
+}
 
 $BOARD.onclick = function (e) {
   const $currentTile = e.target;
@@ -67,12 +85,5 @@ $BOARD.onclick = function (e) {
     tileHandler($currentTile);
   }
 };
-function completeTile(tile) {
-  setTimeout(function () {
-    tile.classList.add("completed");
-    tile.remove;
-  }),
-    1000;
-}
 
 configGame();
