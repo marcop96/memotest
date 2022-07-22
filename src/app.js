@@ -22,7 +22,7 @@ function randomizeColors($SQUARES, colors) {
     $SQUARES[i].classList.add(color);
   });
 }
-function tileHandler($currentTile) {
+function handleTiles($currentTile) {
   showTile($currentTile);
   //if its null its the first tile clicked
   if ($firstTile === null) {
@@ -46,7 +46,7 @@ function tileHandler($currentTile) {
 function hideTile(tile) {
   setTimeout(function () {
     tile.classList.add("occult");
-  }, 500);
+  }, 1000);
 }
 function hideTiles() {
   $SQUARES.forEach(function (a) {
@@ -63,7 +63,7 @@ function areTilesSimilar($firstTile, $currentTile) {
     return false;
   }
 }
-function didGameEnd() {
+function checkGameEnd() {
   if (turnsToComplete === 0) {
     $END_GAME_CONTAINER.classList.remove("nodisplay");
     $END_GAME_TEXT.innerText = `congratulations! you won in ${turns} turns`;
@@ -74,7 +74,7 @@ function completeTile(tile) {
   setTimeout(function () {
     tile.classList.add("completed");
     tile.remove;
-    didGameEnd();
+    checkGameEnd();
   }),
     1000;
 }
@@ -82,7 +82,7 @@ function completeTile(tile) {
 $BOARD.onclick = function (e) {
   const $currentTile = e.target;
   if ($currentTile.classList.contains("square")) {
-    tileHandler($currentTile);
+    handleTiles($currentTile);
   }
 };
 
