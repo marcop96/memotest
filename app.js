@@ -5,13 +5,15 @@ let $END_GAME_TEXT = $END_GAME_CONTAINER.querySelector("h1");
 let $firstTile = null;
 let currentTile;
 let turns = 0;
+
 let turnsToComplete = 6;
 function configGame() {
+  hideTiles();
   const colors = ["blue", "red", "green", "yellow", "pink", "orange"];
   const duplicateColors = colors.concat(colors);
   randomizeColors($SQUARES, duplicateColors);
-  hideTiles();
 }
+
 function randomizeColors($SQUARES, colors) {
   const randomColors = colors.sort(function () {
     return 0.5 - Math.random();
